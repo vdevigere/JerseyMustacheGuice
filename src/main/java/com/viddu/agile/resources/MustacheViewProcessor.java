@@ -1,12 +1,9 @@
 package com.viddu.agile.resources;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.Reader;
 import java.io.Writer;
-import java.net.MalformedURLException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +15,6 @@ import javax.ws.rs.ext.Provider;
 import com.github.mustachejava.DefaultMustacheFactory;
 import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
-import com.sun.jersey.api.core.HttpContext;
 import com.sun.jersey.api.core.ResourceConfig;
 import com.sun.jersey.api.view.Viewable;
 import com.sun.jersey.spi.template.ViewProcessor;
