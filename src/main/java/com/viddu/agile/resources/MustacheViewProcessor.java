@@ -36,6 +36,8 @@ public class MustacheViewProcessor implements ViewProcessor<String> {
 	ThreadLocal<HttpServletResponse> responseInvoker;
 
 	private final String basePath;
+	private final MustacheFactory mf;
+	
 
 	public MustacheViewProcessor(@Context ResourceConfig resourceConfig) {
 		String path = (String) resourceConfig.getProperties().get(MUSTACHE_TEMPLATES_BASE_PATH);
@@ -46,6 +48,7 @@ public class MustacheViewProcessor implements ViewProcessor<String> {
 		} else {
 			this.basePath = "/" + path;
 		}
+		mf = new DefaultMustacheFactory();
 	}
 
 	public String resolve(String path) {
@@ -69,11 +72,14 @@ public class MustacheViewProcessor implements ViewProcessor<String> {
 	public void writeTo(String resolvedPath, Viewable viewable, OutputStream out) throws IOException {
 		// Commit the status and headers to the HttpServletResponse
 		out.flush();
-
-		MustacheFactory mf = new DefaultMustacheFactory();
-		Mustache mustache = mf.compile(resolvedPath);
+		Mustache mustache = getMustacheFromCache(resolvedPath);
 		Writer writer = new OutputStreamWriter(out);
 		mustache.execute(writer , viewable.getModel());
 		writer.flush();
+	}
+
+	private Mustache getMustacheFromCache(String resolvedPath) {
+		Mustache mustache = mf.compile(resolvedPath);
+		return mustache;
 	}
 }

@@ -3,8 +3,8 @@ package com.viddu.agile.model;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Iteration {
-
+public class Data {
+	
 	public String getTitle() {
 		return title;
 	}
@@ -13,14 +13,13 @@ public class Iteration {
 		this.title = title;
 	}
 
-	String title;
+	private String title;
 	
-	public Iteration() {
+	public Data() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Iteration(String title) {
+	public Data(String title){
 		this.title = title;
 	}
-
 }

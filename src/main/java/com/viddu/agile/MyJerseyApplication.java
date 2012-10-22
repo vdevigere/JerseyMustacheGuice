@@ -2,9 +2,9 @@ package com.viddu.agile;
 
 import com.sun.jersey.api.core.PackagesResourceConfig;
 
-public class AgileDashboardApplication extends PackagesResourceConfig {
+public class MyJerseyApplication extends PackagesResourceConfig {
 
-	public AgileDashboardApplication() {
+	public MyJerseyApplication() {
 		super("com.viddu.agile.resources");
 	}
 }
